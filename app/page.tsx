@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppStore } from '@/store/useAppStore';
-import SplashScreen from '@/components/SplashScreen';
+import SplashScreen from '@/components/common/SplashScreen';
 
 export default function Home() {
   const showSplash = useAppStore((state) => state.showSplash);

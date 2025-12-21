@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
-import Sidebar from '@/components/Sidebar';
+import Sidebar from '@/components/common/Sidebar';
 
 export default function DrugValidator() {
   const [drugName, setDrugName] = useState('');

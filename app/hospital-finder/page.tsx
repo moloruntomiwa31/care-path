@@ -3,14 +3,14 @@
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useAppStore } from '@/store/useAppStore';
-import HospitalList from '@/components/HospitalList';
-import HospitalDetails from '@/components/HospitalDetails';
-import Preloader from '@/components/Preloader';
-import Sidebar from '@/components/Sidebar';
-import Toast from '@/components/Toast';
+import HospitalList from '@/components/hospital-finder/HospitalList';
+import HospitalDetails from '@/components/hospital-finder/HospitalDetails';
+import Preloader from '@/components/common/Preloader';
+import Sidebar from '@/components/common/Sidebar';
+import Toast from '@/components/common/Toast';
 import { fetchNearbyHospitals, fetchLocationName, calculateDistance } from '@/utils/api';
 
-const MapView = dynamic(() => import('@/components/MapView'), { ssr: false });
+const MapView = dynamic(() => import('@/components/hospital-finder/MapView'), { ssr: false });
 
 export default function HospitalFinder() {
   const { loading, setLoading, userLocation, setUserLocation, setLocationName, setHospitals, selectedHospital } = useAppStore();
