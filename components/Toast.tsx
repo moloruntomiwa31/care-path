@@ -21,7 +21,7 @@ export default function Toast({ message, type = 'error', onClose }: ToastProps) 
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-1001 animate-[slideUp_0.3s_ease-out]">
+    <div className="fixed bottom-4 md:right-4 z-1001 animate-[slideUp_0.3s_ease-out]">
       <div className={`${colors[type]} text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-3 max-w-md`}>
         <span className="text-xl">{type === 'error' ? '⚠️' : type === 'success' ? '✓' : 'ℹ️'}</span>
         <p className="text-sm flex-1">{message}</p>
