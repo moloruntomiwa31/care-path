@@ -1,10 +1,10 @@
 'use client';
 
-import { useAppStore } from '@/store/useAppStore';
+interface SplashScreenProps {
+  onGetStarted: () => void;
+}
 
-export default function SplashScreen() {
-  const setShowSplash = useAppStore((state) => state.setShowSplash);
-
+export default function SplashScreen({ onGetStarted }: SplashScreenProps) {
   const features = [
     {
       icon: '🏥',
@@ -44,7 +44,7 @@ export default function SplashScreen() {
 
         <div className="text-center">
           <button
-            onClick={() => setShowSplash(false)}
+            onClick={onGetStarted}
             className="bg-white text-primary px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg cursor-pointer"
           >
             Get Started
