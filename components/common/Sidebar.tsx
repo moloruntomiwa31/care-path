@@ -3,17 +3,17 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAppStore } from "@/store/useAppStore";
+// import { useAppStore } from "@/store/useAppStore";
 
 export default function Sidebar() {
 	const pathname = usePathname();
 	const [isOpen, setIsOpen] = useState(false);
-	const locationName = useAppStore((state) => state.locationName);
+	const locationName = JSON.parse(localStorage.getItem("userLocation") || "null");
 
 	const links = [
 		{ href: "/hospital-finder", label: "Hospital Finder", icon: "🏥" },
 		{ href: "/hospital-queue-manager", label: "Queue Manager", icon: "📋" },
-		{ href: "/drug-validator", label: "Drug Validator", icon: "💊" },
+		{ href: "/drug-validator", label: "Drug Authenticator", icon: "💊" },
 	];
 
 	return (

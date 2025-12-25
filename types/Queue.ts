@@ -1,24 +1,39 @@
 export interface User {
-  id: string;
-  name: string;
+  id: number;
+  hospital: number;
+  first_name: string;
+  last_name: string;
   email: string;
   address: string;
-  age: number;
+  date_of_birth: string;
+  status: string;
+  patient_id: string;
 }
 
 export interface QueueHospital {
-  id: string;
-  name: string;
-  address: string;
-  currentQueue: number;
-  estimatedWait: number;
+	id: number;
+	queue_count: string;
+	estimated_waiting_time: string;
+	name: string;
+	address: string;
+	city: string;
+	state: string;
+	email: string;
+	phone: string;
+	longitude: number;
+	latitude: number;
 }
 
+export enum QueueStatus {
+  WAITING = "WAITING",
+  CALLED = "CALLED",
+  COMPLETED = "COMPLETED"
+}
 export interface QueueEntry {
-  id: string;
-  hospitalId: string;
-  hospitalName: string;
-  position: number;
-  status: 'waiting' | 'called' | 'completed';
-  joinedAt: string;
+	id: number;
+	hospital: QueueHospital
+	patient: User;
+	queue_number: number;
+	queue_status: QueueStatus;
+	time_joined: string;
 }
