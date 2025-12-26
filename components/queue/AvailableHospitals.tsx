@@ -1,6 +1,7 @@
 "use client";
 
 import { QueueHospital, QueueEntry } from "@/types/Queue";
+import EmptyState from "../common/EmptyState";
 
 interface AvailableHospitalsProps {
 	hospitals: QueueHospital[];
@@ -43,12 +44,11 @@ export default function AvailableHospitals({
 
 	if (hospitals.length === 0) {
 		return (
-			<div className="text-center text-gray-500 mt-20">
-				<p className="text-lg">No hospitals available at the moment.</p>
-				<p className="text-sm mt-2">
-					Please check back later or adjust your location settings.
-				</p>
-			</div>
+			<EmptyState
+				icon="🏥"
+				title="No Hospitals Available"
+				message="There are currently no hospitals available to join."
+			/>
 		);
 	}
 

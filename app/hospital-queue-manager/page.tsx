@@ -6,7 +6,7 @@ import QueueRegistration from '@/components/queue/QueueRegistration';
 import AvailableHospitals from '@/components/queue/AvailableHospitals';
 import ActiveQueues from '@/components/queue/ActiveQueues';
 import { User } from '@/types/Queue';
-import { queueService } from '@/utils/apiService';
+import { queueService } from '@/utils/queueApiService';
 import { useState, useEffect } from 'react';
 
 export default function HospitalQueueManager() {

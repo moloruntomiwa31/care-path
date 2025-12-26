@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://063db69c-8000.uks1.devtunnels.ms/api';
+const API_BASE_URL = process.env.API_BASE_URL;
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -22,9 +22,9 @@ export interface RegisterUserPayload {
 }
 
 export interface JoinQueuePayload {
-	queue_status: string;
-	patient: number;
-	hospital: number;
+    queue_status: string;
+    patient: number;
+    hospital: number;
 }
 
 export const queueService = {

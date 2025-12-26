@@ -2,6 +2,7 @@
 
 import { QueueEntry } from "@/types/Queue";
 import { QueueStatus } from "@/types/Queue";
+import EmptyState from "../common/EmptyState";
 
 interface ActiveQueuesProps {
 	activeQueue: QueueEntry | null;
@@ -11,17 +12,11 @@ export default function ActiveQueues({ activeQueue }: ActiveQueuesProps) {
 
 	if (!activeQueue) {
 		return (
-			<div className="mb-8">
-				<div className="bg-linear-to-br from-gray-50 to-gray-100 rounded-2xl border-2 border-dashed border-gray-300 p-8 text-center">
-					<div className="text-gray-400 text-5xl mb-3">🏥</div>
-					<h3 className="text-lg font-semibold text-gray-700 mb-2">
-						No Active Queue
-					</h3>
-					<p className="text-sm text-gray-500">
-						Join a hospital queue to get started
-					</p>
-				</div>
-			</div>
+			<EmptyState
+				icon="📋"
+				title="No Active Queue"
+				message="Join a hospital queue to get started."
+			/>
 		);
 	}
 
@@ -68,9 +63,6 @@ export default function ActiveQueues({ activeQueue }: ActiveQueuesProps) {
 		<div className="mb-8">
 			<div className="flex items-center gap-2 mb-4">
 				<h3 className="text-2xl font-bold text-gray-900">Your Active Queue</h3>
-				{/* <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-semibold">
-					Live
-				</span> */}
 			</div>
 
 			<div className="bg-linear-to-br from-white to-gray-50 rounded-2xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all">

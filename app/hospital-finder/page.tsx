@@ -12,7 +12,7 @@ import {
 	fetchNearbyHospitals,
 	fetchLocationName,
 	calculateDistance,
-} from "@/utils/api";
+} from "@/utils/hospitalFinderApi";
 
 const MapView = dynamic(() => import("@/components/hospital-finder/MapView"), {
 	ssr: false,
