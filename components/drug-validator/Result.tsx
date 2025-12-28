@@ -1,45 +1,39 @@
-import React from "react";
-import {
-	DrugValidationResponse,
-    DrugAuthenticityResponse
-} from "@/utils/drugAuthenticatorApi";
+import { DrugAnalysisResult } from "@/utils/drugAuthenticatorApi";
 
 interface ResultProps {
-	result: DrugValidationResponse | DrugAuthenticityResponse;
+	result: DrugAnalysisResult;
 }
 
 export default function Result({ result }: ResultProps) {
-	// --- RENDER LOGIC FOR AUTHENTICITY (Real vs Fake) ---
+	// Format confidence to a clean percentage string
+	const formatConfidence = (val: number) => {
+		const percentage = val <= 1 ? val * 100 : val;
+		return `${percentage.toFixed(1)}%`;
+	};
+
+	// --- CASE 1: AUTHENTICITY CHECK ---
 	if (result.type === "authenticity") {
 		const isAuthentic = result.is_authentic;
+
 		return (
 			<div className="mt-4 p-6 rounded-xl border bg-white shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500 border-l-4 border-l-purple-500">
 				<h3 className="text-lg font-bold mb-4 flex items-center gap-2 pb-2 border-b">
-					{isAuthentic ? "🛡️ Authenticity Check" : "⚠️ Authenticity Check"}
+					{isAuthentic ? "🛡️ Authenticity Verified" : "⚠️ Authenticity Warning"}
 				</h3>
 
 				<div className="space-y-4">
 					<div className="flex items-center justify-between p-4 rounded-lg bg-gray-50 border border-gray-100">
 						<span className="text-sm font-medium text-gray-500 uppercase tracking-wider">
-							Result
+							Verdict
 						</span>
 						<span
-							className={`px-4 py-1.5 rounded-full text-sm font-bold border hidden md:block ${
+							className={`px-4 py-1.5 rounded-full text-xs md:text-sm font-bold border ${
 								isAuthentic
 									? "bg-green-100 text-green-700 border-green-200"
 									: "bg-red-100 text-red-700 border-red-200"
 							}`}
 						>
 							{isAuthentic ? "GENUINE / AUTHENTIC" : "POTENTIAL COUNTERFEIT"}
-						</span>
-						<span
-							className={`px-4 py-1.5 rounded-full text-sm font-bold border md:hidden ${
-								isAuthentic
-									? "bg-green-100 text-green-700 border-green-200"
-									: "bg-red-100 text-red-700 border-red-200"
-							}`}
-						>
-							{isAuthentic ? "AUTHENTIC" : "COUNTERFEIT"}
 						</span>
 					</div>
 
@@ -49,7 +43,7 @@ export default function Result({ result }: ResultProps) {
 								Confidence
 							</span>
 							<span className="font-medium text-gray-900 text-base">
-								{result.confidence * 100}%
+								{formatConfidence(result.confidence)}
 							</span>
 						</div>
 						<div>
@@ -75,12 +69,14 @@ export default function Result({ result }: ResultProps) {
 		);
 	}
 
-	// --- RENDER LOGIC FOR SUITABILITY (Symptoms Check) ---
-	const isSuitable = result.type === "validation" && result.is_suitable;
+	// --- CASE 2: SUITABILITY CHECK ---
+	// TypeScript knows this is 'suitability' type here automatically
+	const isSuitable = result.is_suitable;
+
 	return (
 		<div className="mt-8 p-6 rounded-xl border bg-white shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500 border-l-4 border-l-blue-500">
 			<h3 className="text-lg font-bold mb-4 flex items-center gap-2 pb-2 border-b">
-				{isSuitable ? "✅ Suitability Check" : "🚫 Suitability Check"}
+				{isSuitable ? "✅ Suitable Match" : "🚫 Suitability Warning"}
 			</h3>
 
 			<div className="space-y-4 text-sm">
@@ -98,14 +94,14 @@ export default function Result({ result }: ResultProps) {
 							Confidence
 						</span>
 						<span className="font-medium text-gray-900 text-base">
-							{result.confidence * 100}%
+							{formatConfidence(result.confidence)}
 						</span>
 					</div>
 				</div>
 
 				<div className="pt-2">
 					<span className="block text-gray-500 text-xs uppercase tracking-wide mb-1">
-						Status
+						Recommendation
 					</span>
 					<div
 						className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg w-full ${

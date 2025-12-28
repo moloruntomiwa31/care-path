@@ -28,13 +28,12 @@ export default function DrugValidator() {
 
 	const progress = image ? (symptoms ? 100 : 50) : 0;
 
-
 	const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const file = e.target.files?.[0];
 		if (!file) return;
 
 		setImage(file);
-		// If user changes image, clear old results but stay on analyze tab
+		// Clear results on new image
 		setSuitabilityResult(null);
 		setAuthenticityResult(null);
 
@@ -80,7 +79,7 @@ export default function DrugValidator() {
 			setSuitabilityResult(suitabilityData);
 			setAuthenticityResult(authenticityData);
 
-			// AUTOMATICALLY SWITCH TO RESULT TAB ON SUCCESS
+			// Automatically switch to results tab on success
 			setActiveTab("results");
 		} catch (err: unknown) {
 			console.error("Analysis failed:", err);
@@ -91,7 +90,7 @@ export default function DrugValidator() {
 			}
 
 			setError(errorMessage);
-			// Stay on 'analyze' tab if error so user can fix inputs
+			// We stay on the analyze tab so the user can fix input/retry
 		} finally {
 			setLoading(false);
 		}
@@ -116,6 +115,7 @@ export default function DrugValidator() {
 				<div className="flex-1 overflow-y-auto p-6">
 					<div className="max-w-2xl mx-auto">
 						<div className="bg-white rounded-xl shadow-sm border border-gray-200 min-h-[600px] flex flex-col">
+							{/* --- TABS --- */}
 							<div className="flex border-b border-gray-200">
 								<button
 									onClick={() => setActiveTab("analyze")}
@@ -233,6 +233,7 @@ export default function DrugValidator() {
 											</div>
 										)}
 
+										{/* Analyze Button */}
 										{image && symptoms && (
 											<button
 												onClick={handleAnalyze}
@@ -288,8 +289,9 @@ export default function DrugValidator() {
 								)}
 							</div>
 
+							{/* Disclaimer Footer */}
 							<div className="p-4 bg-blue-50 border-t border-blue-100 rounded-b-xl">
-								<p className="text-xs text-center text-primary">
+								<p className="text-xs text-center text-blue-900">
 									<strong>ℹ️ Disclaimer:</strong> This tool provides
 									AI-generated suggestions. It cannot physically verify chemical
 									composition. Always consult a healthcare provider.
