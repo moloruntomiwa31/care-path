@@ -33,6 +33,7 @@ Your Complete Healthcare Companion - A modern healthcare platform built with Nex
 - **State Management:** Zustand
 - **Maps:** Leaflet & React-Leaflet
 - **API:** OpenStreetMap Overpass API
+- **Backend API Integration:** Backend Django
 
 ## Getting Started
 
@@ -64,15 +65,6 @@ pnpm dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-
-## Features in Development
-
-- Backend API integration
-- Real hospital queue system
-- AI drug validation API
-- User authentication
-- Appointment booking
-- Medical records management
 
 ## License
 

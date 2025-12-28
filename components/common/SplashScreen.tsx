@@ -24,7 +24,7 @@ export default function SplashScreen({ onGetStarted }: SplashScreenProps) {
   ];
 
   return (
-    <div className="fixed min-h-screen inset-0 bg-gray-900 flex items-center justify-center z-50 p-4">
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
       <div className="max-w-4xl w-full">
         <div className="text-center mb-8">
           <div className="text-white text-6xl font-bold mb-2">+</div>
