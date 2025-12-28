@@ -18,8 +18,8 @@ export default function SplashScreen({ onGetStarted }: SplashScreenProps) {
     },
     {
       icon: '💊',
-      title: 'Drug Validator',
-      description: 'Verify drug authenticity and check if medications match your symptoms using our AI-powered validation system.'
+      title: 'Drug Authenticator',
+      description: 'Verify drug suitability and check if medications match your symptoms using our AI-powered validation system.'
     }
   ];
 
