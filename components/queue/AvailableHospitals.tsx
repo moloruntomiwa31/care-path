@@ -21,15 +21,15 @@ export default function AvailableHospitals({
 	// Check if current patient is already in any queue
 	const isPatientInAnyQueue = () => {
 		if (!currentPatientId || !queues || queues.length === 0) return false;
-		console.log("Current Patient ID:", currentPatientId);
-		console.log("Queues:", queues);
+		// console.log("Current Patient ID:", currentPatientId);
+		// console.log("Queues:", queues);
 		return queues.some((q) => {
-			console.log(
-				"Checking patient:",
-				q.patient.id,
-				"against",
-				currentPatientId
-			);
+			// console.log(
+			// 	"Checking patient:",
+			// 	q.patient.id,
+			// 	"against",
+			// 	currentPatientId
+			// );
 			return q.patient.id === currentPatientId;
 		});
 	};
