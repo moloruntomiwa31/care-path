@@ -114,7 +114,7 @@ export default function DrugValidator() {
 
 				<div className="flex-1 overflow-y-auto p-6">
 					<div className="max-w-2xl mx-auto">
-						<div className="bg-white rounded-xl shadow-sm border border-gray-200 min-h-[600px] flex flex-col">
+						<div className="bg-white rounded-xl shadow-sm border border-gray-200 min-h-150 flex flex-col">
 							{/* --- TABS --- */}
 							<div className="flex border-b border-gray-200">
 								<button
