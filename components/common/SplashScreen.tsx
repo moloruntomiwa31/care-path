@@ -24,7 +24,7 @@ export default function SplashScreen({ onGetStarted }: SplashScreenProps) {
   ];
 
   return (
-    <div className="fixed inset-0 bg-primary-dark flex items-center justify-center z-50 p-4">
+    <div className="fixed min-h-screen inset-0 bg-gray-900 flex items-center justify-center z-50 p-4">
       <div className="max-w-4xl w-full">
         <div className="text-center mb-8">
           <div className="text-white text-6xl font-bold mb-2">+</div>
@@ -45,7 +45,7 @@ export default function SplashScreen({ onGetStarted }: SplashScreenProps) {
         <div className="text-center">
           <button
             onClick={onGetStarted}
-            className="bg-white text-primary px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg cursor-pointer"
+            className="bg-white text-gray-900 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg cursor-pointer"
           >
             Get Started
           </button>

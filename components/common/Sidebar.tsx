@@ -47,7 +47,7 @@ export default function Sidebar() {
 			<button
 				onClick={() => setIsOpen(!isOpen)}
 				className={`lg:hidden fixed top-4 z-50 bg-primary text-white p-2 rounded-lg shadow-lg w-10 h-10 flex items-center justify-center transition-all duration-300 ${
-					isOpen ? "left-64 ml-4" : "left-4"
+					isOpen ? "left-72 ml-4" : "left-4"
 				}`}
 			>
 				<span className="text-lg">{isOpen ? "✕" : "☰"}</span>
@@ -61,7 +61,7 @@ export default function Sidebar() {
 			)}
 
 			<div
-				className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 flex flex-col transform transition-transform duration-300 ease-in-out lg:transform-none ${
+				className={`fixed lg:static inset-y-0 left-0 z-999 w-64 bg-white border-r border-gray-200 flex flex-col transform transition-transform duration-300 ease-in-out lg:transform-none ${
 					isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
 				}`}
 			>
